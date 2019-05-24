@@ -14,7 +14,7 @@ def main():
             print(uid)
             ndef_data = mifare.ndef_data()
             data = json.loads(ndef_data[5:])
-            print(data)
+            check_booking(data)
         except nxppy.SelectError:
             pass
         except MemoryError:
@@ -24,6 +24,14 @@ def main():
             print('Could not parse data from JSON')
             pass
         time.sleep(1)
+
+
+def check_booking(data):
+    if data is not None:
+        print('Authorized')
+        print('Unlocking...')
+    else:
+        print('Unauthorized')
 
 
 if __name__ == '__main__':
