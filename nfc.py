@@ -12,8 +12,9 @@ def main():
         try:
             uid = mifare.select()
             print(uid)
-            ndef_data = mifare.ndef_data()
-            data = json.loads(ndef_data[5:])
+            ndef_data = mifare.read_ndef()
+            print(ndef_data[4:])
+            data = json.loads(ndef_data[4:])
             check_booking(data)
         except nxppy.SelectError:
             pass
