@@ -8,8 +8,8 @@ while True:
     try:
         uid = mifare.select()
         print(uid)
-        message = mifare.read()
-        print(message)
+        ndef_data = mifare.ndef_data()
+        print(ndef_data)
     except nxppy.SelectError:
         pass
     except MemoryError:
